@@ -1,10 +1,12 @@
-// Include React
-var React = require("react");
-// Including the Link component from React Router to navigate within our application without full page reloads
-var Link = require("react-router").Link;
+// Import React
+import React from 'react'
+// Import the Link component from react-router-dom to navigate within our application without full page reloads
+import Link from 'react-router-dom'
 
-var Search = React.createClass({
-    render: function () {
+// Import 
+
+class Search extends React.Component {
+    render() {
         return (
             <div className="container">
                 <div className="col-lg-12">
@@ -17,15 +19,15 @@ var Search = React.createClass({
                             <p>
                             </p>
 
-                            {/* This code will allow us to automatically dump the correct GrandChild component */}
-                            {this.props.children}
+                            {/* put children here */}
                         </div>
 
                     </div>
                 </div>
             </div>
-        );
+        )
     }
-});
+}
 
-module.exports = Search;
+
+export default Search

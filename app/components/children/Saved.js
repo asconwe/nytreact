@@ -1,10 +1,9 @@
 // Include React
-var React = require("react");
+import React from 'react'
 // Including the Link component from React Router to navigate within our application without full page reloads
-var Link = require("react-router").Link;
 
-var Saved = React.createClass({
-    render: function () {
+class Saved extends React.Component {
+    render() {
         return (
             <div className="container">
                 <div className="col-lg-12">
@@ -14,14 +13,13 @@ var Saved = React.createClass({
                         </div>
                         <div className="panel-body">
                             <p>Saved articles</p>
-                            add article components here
                         </div>
-
                     </div>
                 </div>
             </div>
         );
     }
-});
+}
 
-module.exports = Saved;
+
+export default Saved

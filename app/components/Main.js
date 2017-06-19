@@ -1,37 +1,38 @@
 // Include React
-var React = require("react");
+import React from 'react'
+
 // Including the Link component from React Router to navigate within our application without full page reloads
-var Link = require("react-router").Link;
+import {
+    HashRouter,
+    Route,
+    Link
+} from 'react-router-dom'
 
-var Main = React.createClass({
+// Import components
+import Search from './children/Search'
+import Saved from './children/Saved'
 
-    // Here we render the function
-    render: function () {
-
-        return (
-
-            <div className="container">
-                <div className="jumbotron">
-                    <h2><strong>NYTimes React</strong></h2>
-                    <p><em>Find and save NYTimes articles</em></p>
-                    <hr />
-                    <p>
-                        <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
-                        <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
-                    </p>
-                </div>
-
-                <div className="row">
-
-                    {/* This code will dump the correct Child Component */}
-                    {this.props.children}
-
-                </div>
+const Main = () => (
+    <HashRouter>
+        <div className="container">
+            <div className="jumbotron">
+                <h2><strong>NYTimes React</strong></h2>
+                <p><em>Find and save NYTimes articles</em></p>
+                <hr />
+                <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
+                <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
+                <Route exact path="/Search" component={Search} />
+                <Route path="/Saved" component={Saved} />
 
             </div>
-        );
-    }
-});
+
+            <div className="row">
+
+            </div>
+
+        </div>
+    </HashRouter>
+);
 
 // Export the component back for use in other files
-module.exports = Main;
+export default Main
