@@ -1,0 +1,14 @@
+{
+  "name": "nyt",
+  "version": "1.0.0",
+  "description": "NYT Article scrubber",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NYT"
+  ],
+  "author": "August",
+  "license": "ISC"
+}
