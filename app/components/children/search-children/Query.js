@@ -1,19 +1,19 @@
-// // Include React
-// var React = require("react");
+// Import React
+import React from 'react'
 
-// var Query = React.createClass({
-//   render: function() {
-//     return (
-//       <div className="panel panel-warning">
-//         <div className="panel-heading">
-//           <h3 className="panel-title">Grandchild #1</h3>
-//         </div>
-//         <div className="panel-body">
-//           Query
-//         </div>
-//       </div>
-//     );
-//   }
-// });
+class Query extends React.Component {
+  render() {
+    return (
+      <div className="panel panel-warning">
+        <div className="panel-heading">
+          <h3 className="panel-title">Query</h3>
+        </div>
+        <div className="panel-body">
+          Query
+        </div>
+      </div>
+    );
+  }
+}
 
-// module.exports = Query;
+export default Query

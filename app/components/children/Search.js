@@ -1,9 +1,9 @@
 // Import React
 import React from 'react'
-// Import the Link component from react-router-dom to navigate within our application without full page reloads
-import Link from 'react-router-dom'
 
-// Import 
+// Import child components
+import Query from './search-children/Query'
+import Results from './search-children/Results'
 
 class Search extends React.Component {
     render() {
@@ -15,13 +15,9 @@ class Search extends React.Component {
                             <h3 className="panel-title">Search</h3>
                         </div>
                         <div className="panel-body">
-                            <p>Search</p>
-                            <p>
-                            </p>
-
-                            {/* put children here */}
+                            <Query />
+                            <Results />    
                         </div>
-
                     </div>
                 </div>
             </div>

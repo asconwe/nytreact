@@ -1,19 +1,24 @@
-// // Include React
-// var React = require("react");
+// Import React
+import React from 'react'
+import { 
+    HashRouter,
+    Route,
+    Link
+} from 'react-router-dom'
 
-// var Results = React.createClass({
-//   render: function() {
-//     return (
-//       <div className="panel panel-warning">
-//         <div className="panel-heading">
-//           <h3 className="panel-title">Grandchild #1</h3>
-//         </div>
-//         <div className="panel-body">
-//           Results
-//         </div>
-//       </div>
-//     );
-//   }
-// });
+class Results extends React.Component {
+  render() {
+    return (
+      <div className="panel panel-warning">
+        <div className="panel-heading">
+          <h3 className="panel-title">Results</h3>
+        </div>
+        <div className="panel-body">
+          Results
+        </div>
+      </div>
+    );
+  }
+}
 
-// module.exports = Results;
+export default Results
