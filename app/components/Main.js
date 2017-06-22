@@ -12,27 +12,41 @@ import {
 import Search from './children/Search'
 import Saved from './children/Saved'
 
-const Main = () => (
-    <HashRouter>
-        <div className="container">
-            <div className="jumbotron">
-                <h2><strong>NYTimes React</strong></h2>
-                <p><em>Find and save NYTimes articles</em></p>
-                <hr />
-                <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
-                <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
-                <Route exact path="/Search" component={Search} />
-                <Route path="/Saved" component={Saved} />
+class Main extends React.Component {
+    constructor() {
+        super();
+        this.state = {
 
-            </div>
+        }
+    }
+    saveArticle() { 
+        
+    }
+    render() {
+        return (
+            <HashRouter>
+                <div className="container">
+                    <div className="jumbotron">
+                        <h2><strong>NYTimes React</strong></h2>
+                        <p><em>Find and save NYTimes articles</em></p>
+                        <hr />
+                        <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
+                        <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
+                        <Route exact path="/" something="test" component={(props) => <Search {...props} foo="testing" />} />
+                        <Route path="/Search" component={(props) => <Search {...props} foo="testing" />} />
+                        <Route path="/Saved" component={(props) => <Saved {...props} foo="testing" />} />
 
-            <div className="row">
+                    </div>
 
-            </div>
+                    <div className="row">
 
-        </div>
-    </HashRouter>
-);
+                    </div>
+
+                </div>
+            </HashRouter>
+        )
+    }
+}
 
 // Export the component back for use in other files
 export default Main

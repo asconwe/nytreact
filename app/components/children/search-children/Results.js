@@ -14,7 +14,7 @@ class Results extends React.Component {
           <h3 className="panel-title">Results</h3>
         </div>
         <div className="panel-body">
-          Results
+          {console.log(this.props.results)}
         </div>
       </div>
     );
