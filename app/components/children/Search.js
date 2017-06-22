@@ -9,7 +9,7 @@ class Search extends React.Component {
     constructor() {
         super();
         this.state = {
-            searchResults: ""
+            searchResults: []
         }
         this.handleResults = this.handleResults.bind(this);
     }
@@ -20,19 +20,15 @@ class Search extends React.Component {
     }
     render() {
         return (
-            <div className="container">
-                <div className="col-lg-12">
-                    <div className="panel panel-primary">
-                        <div className="panel-heading">
-                            <h3 className="panel-title">Search</h3>
-                        </div>
-                        <div className="panel-body">
-                            <Query handleResults={this.handleResults} />
-                            <Results results={this.state.searchResults} />
-                        </div>
+                <div className="panel panel-primary">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">Search</h3>
+                    </div>
+                    <div className="panel-body">
+                        <Query handleResults={this.handleResults} />
+                        <Results results={this.state.searchResults} />
                     </div>
                 </div>
-            </div>
         )
     }
 }

@@ -23,7 +23,7 @@ class Query extends React.Component {
         console.log('clicked');
         const url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=4e296b3423a148a9b6ec9b078a991d26&q=" + this.state.term;
         axios.get(url).then((response) => {
-            this.props.handleResults(response);
+            this.props.handleResults(response.data.response.docs);
         })
     }
     render() {

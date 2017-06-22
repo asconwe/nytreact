@@ -19,8 +19,8 @@ class Main extends React.Component {
 
         }
     }
-    saveArticle() { 
-        
+    saveArticle() {
+
     }
     render() {
         return (
@@ -29,17 +29,22 @@ class Main extends React.Component {
                     <div className="jumbotron">
                         <h2><strong>NYTimes React</strong></h2>
                         <p><em>Find and save NYTimes articles</em></p>
-                        <hr />
-                        <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
-                        <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
-                        <Route exact path="/" something="test" component={(props) => <Search {...props} foo="testing" />} />
-                        <Route path="/Search" component={(props) => <Search {...props} foo="testing" />} />
-                        <Route path="/Saved" component={(props) => <Saved {...props} foo="testing" />} />
-
                     </div>
+                    <hr />
+                    <div className="row">
+                        <div className="col-xs-12">
+                            <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
+                            <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
+                        </div>
+                    </div>
+                    <hr />
 
                     <div className="row">
-
+                        <div className="col-xs-12">
+                            <Route exact path="/" something="test" component={(props) => <Search {...props} foo="testing" />} />
+                            <Route path="/Search" component={(props) => <Search {...props} foo="testing" />} />
+                            <Route path="/Saved" component={(props) => <Saved {...props} foo="testing" />} />
+                        </div>
                     </div>
 
                 </div>
