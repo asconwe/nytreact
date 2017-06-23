@@ -11,15 +11,18 @@ mongoose.Promise = Promise; // What is this for? I'm not using promises with Mon
 const app = express();
 
 // Use body-parser in our app
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("public"));
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
 
 // Database configuration
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI)
 } else {
-  mongoose.connect("mongodb://localhost/comments")
+  mongoose.connect("mongodb://localhost/nyt")
 }
 const db = mongoose.connection;
 

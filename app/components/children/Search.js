@@ -20,15 +20,15 @@ class Search extends React.Component {
     }
     render() {
         return (
-                <div className="panel panel-primary">
-                    <div className="panel-heading">
-                        <h3 className="panel-title">Search</h3>
-                    </div>
-                    <div className="panel-body">
-                        <Query handleResults={this.handleResults} />
-                        <Results results={this.state.searchResults} />
-                    </div>
+            <div className="panel panel-primary">
+                <div className="panel-heading">
+                    <h3 className="panel-title">Search</h3>
                 </div>
+                <div className="panel-body">
+                    <Query handleResults={this.handleResults} />
+                    <Results saveArticle={this.props.saveArticle} results={this.state.searchResults} />
+                </div>
+            </div>
         )
     }
 }

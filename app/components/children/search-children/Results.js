@@ -16,10 +16,7 @@ class Results extends React.Component {
           <h3 className="panel-title">Results</h3>
         </div>
         <div className="panel-body">
-        {console.log(this.props.results)}  
-          {this.props.results.map((data, index) => (
-            <Article data={data} key={index} />
-          ))}
+          {this.props.results.map((data, index) => <Article saveArticle={this.props.saveArticle} headline={data.headline.main} web_url={data.web_url} pub_date={data.pub_date} key={index} /> )}
         </div>
       </div>
     );

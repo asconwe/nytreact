@@ -6,22 +6,18 @@ import {
     Link
 } from 'react-router-dom'
 
+import axios from 'axios'
 
-class Article extends React.Component {
+class SavedArticle extends React.Component {
     constructor() {
         super()
-        this.handleSave = this.handleSave.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     
-    handleSave(event) {
-        event.preventDefault();
-        const article = {
-            headline: this.props.headline,
-            web_url: this.props.web_url,
-            pub_date: this.props.pub_date
-        }
-        console.log('handle save', article);
-        this.props.saveArticle(article);
+    handleDelete() {
+        console.log('handle save');
+        // this.props.saveArticle(this.article)
+        axios.put("/api/delete", { headline: this.props.headline }).then((response) => this.props.handleResponse(response));
     }
 
     render() {
@@ -38,7 +34,7 @@ class Article extends React.Component {
                             </div>
                             <div className="col-xs-2">
                                 <div className="text-right">
-                                    <button className="btn btn-default btn-right" onClick={this.handleSave}>Save</button>
+                                    <button className="btn btn-default btn-right" onClick={this.handleDelete}>Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -49,4 +45,4 @@ class Article extends React.Component {
     }
 }
 
-export default Article
+export default SavedArticle
