@@ -1,11 +1,12 @@
 // Import React
 import React from 'react'
 
+import { HashRouter, Route, Link} from 'react-router-dom'
 // Import axios
 import axios from 'axios'
 
 class Query extends React.Component {
-    constructor() { 
+    constructor() {
         super()
         this.state = {
             term: ""
@@ -20,12 +21,9 @@ class Query extends React.Component {
     }
 
     handleClick(event) {
-        console.log('clicked');
-        const url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=4e296b3423a148a9b6ec9b078a991d26&q=" + this.state.term;
-        axios.get(url).then((response) => {
-            this.props.handleResults(response.data.response.docs);
-        })
+        this.render();
     }
+
     render() {
         return (
             <div className="panel panel-warning">
@@ -36,7 +34,9 @@ class Query extends React.Component {
                     <div className="input-group">
                         <input className="form-control" type="text" onChange={this.handleChange} value={this.state.term} />
                         <span className="input-group-btn">
-                            <button className="btn btn-default" type="button" onClick={this.handleClick} >Go!</button>
+                            <HashRouter>
+                                <Link to={'/Search/' + this.state.term}><button className="btn btn-default" type="button">Go!</button></ Link>
+                            </ HashRouter>
                         </span>
                     </div>
                 </div>

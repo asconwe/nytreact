@@ -69,7 +69,7 @@ class Main extends React.Component {
                     <div className="row">
                         <div className="col-xs-12">
                             <Route exact path="/" component={(props) => <Search {...props} saveArticle={this.saveArticle}/>} />
-                            <Route path="/Search" component={(props) => <Search {...props} saveArticle={this.saveArticle} />} />
+                            <Route path="/Search/:term" component={(props) => <Search {...props} saveArticle={this.saveArticle} />} />
                             <Route path="/Saved" component={(props) => <Saved {...props} handleResponse={this.handleResponse} savedArticles={this.state.savedArticles} />} />
                         </div>
                     </div>
