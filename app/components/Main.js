@@ -18,9 +18,10 @@ class Main extends React.Component {
     constructor() {
         super();
         this.state = {
-            savedArticles: []
+            refresh: false
         }
     }
+
     render() {
         return (
             <HashRouter>
@@ -42,7 +43,7 @@ class Main extends React.Component {
                         <div className="col-xs-12">
                             <Route exact path="/" component={(props) => <Search {...props} saveArticle={this.saveArticle} />} />
                             <Route path="/Search/:term" component={(props) => <Search {...props} saveArticle={this.saveArticle} />} />
-                            <Route path="/Saved" component={(props) => <Saved {...props} savedArticles={this.state.savedArticles} />} />
+                            <Route path="/Saved" component={(props) => <Saved {...props} />} />
                         </div>
                     </div>
 

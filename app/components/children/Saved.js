@@ -12,7 +12,10 @@ class Saved extends React.Component {
             savedArticles: [],
         }
         this.getAllArticles = this.getAllArticles.bind(this);
-        this.getAllArticles();
+        
+    }
+    componentDidMount() { 
+        this.getAllArticles();  
     }
     getAllArticles() {
         axios.get(`/api/all`).then((response) => {
@@ -31,7 +34,7 @@ class Saved extends React.Component {
                 </div>
                 <div className="panel-body">
                     <div className="panel-body">
-                        {this.state.savedArticles.map((article, index) => <SavedArticle updateParent={this.getAllArticles} headline={article.headline} web_url={article.web_url} pub_date={article.pub_date} key={index} />)}
+                        {this.state.savedArticles.map((article, index) => <SavedArticle updateParent={this.getAllArticles} deleted={false} headline={article.headline} web_url={article.web_url} pub_date={article.pub_date} key={index} />)}
                     </div>
                 </div>
             </div>

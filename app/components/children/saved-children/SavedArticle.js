@@ -16,7 +16,6 @@ class SavedArticle extends React.Component {
         }
         this.handleDelete = this.handleDelete.bind(this);
     }
-    
     handleDelete() {
         axios.put("/api/delete", { headline: this.props.headline }).then((response) => {
             this.setState({ deleted: true })
