@@ -20,34 +20,6 @@ class Main extends React.Component {
         this.state = {
             savedArticles: []
         }
-        this.getAllArticles = this.getAllArticles.bind(this);
-        this.saveArticle = this.saveArticle.bind(this);   
-        this.handleResponse = this.handleResponse.bind(this);
-    }
-    componentDidMount() {
-        this.getAllArticles();
-    }
-
-    getAllArticles() { 
-        axios.get(`/api/all`).then((response) => {
-            if (response) {
-                this.handleResponse(response);
-            }
-        })
-    }
-    saveArticle(article) {
-        console.log('article for post', article);
-        axios.post("/api/new", article).then((response) => {
-            console.log("response", response);
-            if (response) {
-                this.handleResponse(response);
-            }
-        })
-    }
-    handleResponse(response) { 
-        this.setState({
-            savedArticles: response.data
-        })
     }
     render() {
         return (
@@ -60,7 +32,7 @@ class Main extends React.Component {
                     <hr />
                     <div className="row">
                         <div className="col-xs-12">
-                            <Link to="/Search"><button className="btn btn-primary btn-lg">Article search</button></Link>
+                            <Link to="/"><button className="btn btn-primary btn-lg">Article search</button></Link>
                             <Link to="/Saved"><button className="btn btn-danger btn-lg">Saved articles</button></Link>
                         </div>
                     </div>
@@ -68,9 +40,9 @@ class Main extends React.Component {
 
                     <div className="row">
                         <div className="col-xs-12">
-                            <Route exact path="/" component={(props) => <Search {...props} saveArticle={this.saveArticle}/>} />
+                            <Route exact path="/" component={(props) => <Search {...props} saveArticle={this.saveArticle} />} />
                             <Route path="/Search/:term" component={(props) => <Search {...props} saveArticle={this.saveArticle} />} />
-                            <Route path="/Saved" component={(props) => <Saved {...props} handleResponse={this.handleResponse} savedArticles={this.state.savedArticles} />} />
+                            <Route path="/Saved" component={(props) => <Saved {...props} savedArticles={this.state.savedArticles} />} />
                         </div>
                     </div>
 

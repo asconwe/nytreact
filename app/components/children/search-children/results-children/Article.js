@@ -6,24 +6,42 @@ import {
     Link
 } from 'react-router-dom'
 
+import axios from 'axios'
 
 class Article extends React.Component {
     constructor() {
         super()
+        this.state = {
+            saved: false
+        }
         this.handleSave = this.handleSave.bind(this);
+        this.handleResponse = this.handleResponse.bind(this);
+        this.saveArticle = this.saveArticle.bind(this);
+        console.log('state', this.state)
     }
-    
+
     handleSave(event) {
-        event.preventDefault();
         const article = {
             headline: this.props.headline,
             web_url: this.props.web_url,
             pub_date: this.props.pub_date
         }
-        console.log('handle save', article);
-        this.props.saveArticle(article);
+        this.saveArticle(article);
     }
-
+    
+    saveArticle(article) {
+        axios.post("/api/new", article).then((response) => {
+            console.log("response", response);
+            if (response) {
+               this.handleResponse()
+            }
+        })
+    }
+    handleResponse() { 
+        this.setState({
+            saved: true
+        })
+    }
     render() {
         return (
             <div className="row">
@@ -38,7 +56,9 @@ class Article extends React.Component {
                             </div>
                             <div className="col-xs-2">
                                 <div className="text-right">
-                                    <button className="btn btn-default btn-right" onClick={this.handleSave}>Save</button>
+                                    <HashRouter>
+                                        <button className="btn btn-default btn-right" onClick={this.handleSave} disabled={(this.state.saved ? true : false)}>{(this.state.saved ? 'Saved!' : 'Save')}</button>
+                                    </HashRouter>
                                 </div>
                             </div>
                         </div>

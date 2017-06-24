@@ -11,13 +11,19 @@ import axios from 'axios'
 class SavedArticle extends React.Component {
     constructor() {
         super()
+        this.state = {
+            deleted: false
+        }
         this.handleDelete = this.handleDelete.bind(this);
     }
     
     handleDelete() {
-        console.log('handle save');
-        // this.props.saveArticle(this.article)
-        axios.put("/api/delete", { headline: this.props.headline }).then((response) => this.props.handleResponse(response));
+        axios.put("/api/delete", { headline: this.props.headline }).then((response) => {
+            this.setState({ deleted: true })
+            setTimeout(() => { 
+                this.props.updateParent();
+            }, 3000) 
+        });
     }
 
     render() {
@@ -27,14 +33,14 @@ class SavedArticle extends React.Component {
                     <div className="well">
                         <div className="row">
                             <div className="col-xs-6">
-                                <a href={this.props.web_url}><h4>{this.props.headline}</h4></a>
+                                {(this.state.deleted ? <h4>{this.props.headline}</h4> : <a href={this.props.web_url}><h4>{this.props.headline}</h4></a>)}
                             </div>
                             <div className="col-xs-4">
-                                <h4>{this.props.pub_date}</h4>
+                                <h4>{(this.state.deleted ? <span>Deleted!</span> : this.props.pub_date)}</h4>
                             </div>
                             <div className="col-xs-2">
                                 <div className="text-right">
-                                    <button className="btn btn-default btn-right" onClick={this.handleDelete}>Delete</button>
+                                    <button className="btn btn-default btn-right" onClick={this.handleDelete} disabled={(this.state.deleted ? true : false)}>Delete</button>
                                 </div>
                             </div>
                         </div>

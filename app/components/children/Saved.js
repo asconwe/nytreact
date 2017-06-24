@@ -1,9 +1,31 @@
 // Include React
 import React from 'react'
 
+import axios from 'axios'
+
 import SavedArticle from './saved-children/SavedArticle.js'
 
 class Saved extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            savedArticles: [],
+        }
+        this.getAllArticles = this.getAllArticles.bind(this);
+        this.getAllArticles();
+    }
+    componentDidMount() { 
+        console.log('didMount')
+    }
+    getAllArticles() {
+        axios.get(`/api/all`).then((response) => {
+            if (response) {
+                this.setState({
+                    savedArticles: response.data
+                })
+            }
+        })
+    }
     render() {
         return (
             <div className="panel panel-primary">
@@ -12,8 +34,7 @@ class Saved extends React.Component {
                 </div>
                 <div className="panel-body">
                     <div className="panel-body">
-                        {console.log(this.props.savedArticles)}
-                        {this.props.savedArticles.map((article, index) => <SavedArticle handleResponse={this.props.handleResponse} headline={article.headline} web_url={article.web_url} pub_date={article.pub_date} key={index} /> )}
+                        {this.state.savedArticles.map((article, index) => <SavedArticle updateParent={this.getAllArticles} headline={article.headline} web_url={article.web_url} pub_date={article.pub_date} key={index} />)}
                     </div>
                 </div>
             </div>
