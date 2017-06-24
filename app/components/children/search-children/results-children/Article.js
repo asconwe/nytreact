@@ -17,7 +17,6 @@ class Article extends React.Component {
         this.handleSave = this.handleSave.bind(this);
         this.handleResponse = this.handleResponse.bind(this);
         this.saveArticle = this.saveArticle.bind(this);
-        console.log('state', this.state)
     }
 
     handleSave(event) {
@@ -31,7 +30,6 @@ class Article extends React.Component {
     
     saveArticle(article) {
         axios.post("/api/new", article).then((response) => {
-            console.log("response", response);
             if (response) {
                this.handleResponse()
             }

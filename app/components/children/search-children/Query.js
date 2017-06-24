@@ -12,16 +12,10 @@ class Query extends React.Component {
             term: ""
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
     }
     // This function will respond to the user input
     handleChange(event) {
-        console.log('something')
         this.setState({ term: event.target.value });
-    }
-
-    handleClick(event) {
-        this.render();
     }
 
     render() {
@@ -35,7 +29,7 @@ class Query extends React.Component {
                         <input className="form-control" type="text" onChange={this.handleChange} value={this.state.term} />
                         <span className="input-group-btn">
                             <HashRouter>
-                                <Link to={'/Search/' + this.state.term}><button className="btn btn-default" type="button">Go!</button></ Link>
+                                <Link to={'/Search/' + this.state.term}><button disabled={(this.state.term.length > 0 ? false : true)} className="btn btn-default" type="button">Go!</button></ Link>
                             </ HashRouter>
                         </span>
                     </div>

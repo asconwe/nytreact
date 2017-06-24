@@ -14,9 +14,6 @@ class Saved extends React.Component {
         this.getAllArticles = this.getAllArticles.bind(this);
         this.getAllArticles();
     }
-    componentDidMount() { 
-        console.log('didMount')
-    }
     getAllArticles() {
         axios.get(`/api/all`).then((response) => {
             if (response) {
